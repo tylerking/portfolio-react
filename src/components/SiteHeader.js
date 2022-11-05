@@ -12,7 +12,7 @@ import Link from '@mui/material/Link'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
-const pages = ['Services', 'Projects', 'About', 'Contact']
+const pages = ['About', 'Services', 'Projects', 'Contact']
 
 function SiteHeader() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
@@ -109,7 +109,7 @@ function SiteHeader() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link href={page}>{page}</Link>
+                <Link href={ `#${page}` }>{page}</Link>
               </Button>
             ))}
           </Box>

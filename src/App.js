@@ -1,6 +1,5 @@
 // Modules
 import React, { useEffect, useState } from 'react'
-import { FullPage, Slide } from 'react-full-page'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES} from '@contentful/rich-text-types'
 
@@ -136,57 +135,56 @@ function App() {
       <CssBaseline />
       <SiteHeader />
       <Container maxWidth='xl'>
-        <FullPage controls>
-          {/* About */}
-          <Slide id='about'>
-            <Box sx={{ flexGrow: 1 }}>
-              <About 
-                name={introData.name}
-                title={introData.title}
-                description={documentToReactComponents(introData.description.json, richTextOptions)}
-                social={socialData}
-              />
-            </Box>
-          </Slide>
-          {/* Services */}
-          <Slide id='services'>
-            <h3>Services</h3>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
-                {serviceData.map((service, index) =>
-                  <Service
-                    key={index}
-                    title={service.title}
-                    icon={service.icon}
-                    description={documentToReactComponents(service.description.json, richTextOptions)}
-                  />
-                )}
-              </Grid>
-            </Box>
-          </Slide>
-          {/* Projects */}
-          <Slide id='projects'>
-            <h3>Projects</h3>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
-                {projectData.map((project, index) =>
-                  <Project
-                    key={index}
-                    title={project.title}
-                    image={project.image}
-                    description={documentToReactComponents(project.description.json, richTextOptions)}
-                  />
-                )}
-              </Grid>
-            </Box>
-          </Slide>
-          {/* Contact */}
-          <Slide id='contact'>
-            <h3>Contact</h3>
-            <Contact />
-          </Slide>
-          <SiteFooter />
-        </FullPage>
+        {/* About */}
+        <section id="About">
+          <Box sx={{ flexGrow: 1 }}>
+            <About 
+              name={introData.name}
+              title={introData.title}
+              description={documentToReactComponents(introData.description.json, richTextOptions)}
+              social={socialData}
+            />
+          </Box>
+        </section>
+        {/* Services */}
+        <section id="Services">
+          <h3>Services</h3>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              {serviceData.map((service, index) =>
+                <Service
+                  key={index}
+                  title={service.title}
+                  icon={service.icon}
+                  description={documentToReactComponents(service.description.json, richTextOptions)}
+                />
+              )}
+            </Grid>
+          </Box>
+        </section>
+        {/* Projects */}
+        <section id="Projects">
+          <h3>Projects</h3>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              {projectData.map((project, index) =>
+                <Project
+                  key={index}
+                  title={project.title}
+                  image={project.image}
+                  description={documentToReactComponents(project.description.json, richTextOptions)}
+                />
+              )}
+            </Grid>
+          </Box>
+        </section>
+        {/* Contact */}
+        <section id="Contact">
+          <h3>Contact</h3>
+          <Contact />
+        </section>
+        {/* Footer */}
+        <SiteFooter />
       </Container>
     </ThemeProvider>
   )

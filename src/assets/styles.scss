@@ -11,7 +11,10 @@ $white: #f5f5f5;
 //Typography
 $font: 'Ubuntu', sans-serif;
 
-html {font-size: 100%;} /*16px*/
+html {
+  font-size: 100%; /*16px*/
+  scroll-behavior: smooth;
+}
 body {
   font-family: $font;
   font-weight: 400;
@@ -40,14 +43,14 @@ h5 {font-size: 1.2rem;}
 small, .text_small {font-size: 0.833rem;}
 
 
+section {
+  min-height: 100vh;
+  padding-top: 69px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1248px;
-}
-
-.full-page-controls {
-  margin-top: 20px;
-  position: fixed;
 }
 
 /*
