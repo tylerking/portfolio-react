@@ -5,8 +5,9 @@ import Select from '@mui/material/Select'
 import Snackbar from '@mui/material/Snackbar'
 import TextField from '@mui/material/TextField'
 
+const AIRTABLE_KEY = process.env.REACT_APP_AIRTABLE_KEY
 const Airtable = require('airtable')
-const base = new Airtable({apiKey: 'keyxsPDSxeCVyn00D'}).base('appAlpFTjJfNWcSEw')
+const base = new Airtable({apiKey: `${AIRTABLE_KEY}`}).base('appAlpFTjJfNWcSEw')
 
 const Form = () => {
   const [open, setOpen] = useState(false)

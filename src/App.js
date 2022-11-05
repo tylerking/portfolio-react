@@ -98,12 +98,13 @@ function App() {
   const [socialData, setSocialData] = useState(null)
 
   useEffect(() => {
+    const CONTENTFUL_BEARER = process.env.REACT_APP_CONTENTFUL_BEARER
     window
       .fetch(`https://graphql.contentful.com/content/v1/spaces/alowrex0ufnr/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer tzmlkO3VxV0l69u_LVH0FcSsN4anp84duHAnd-dEaSs',
+          'Authorization': `Bearer ${CONTENTFUL_BEARER}`,
         },
         // send GraphQL query
         body: JSON.stringify({ query }),
