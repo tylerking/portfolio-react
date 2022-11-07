@@ -8,7 +8,7 @@ const About = ({description, name, social, title}) => {
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <h1>{name}</h1>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <div>{description}</div>
         {social.map((social, index) =>
           <Social

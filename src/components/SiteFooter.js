@@ -1,7 +1,7 @@
 const SiteFooter = () => {
   return (
     <footer>
-      <p>Copyright &copy</p>
+      <p>&copy; 2022 Tyler King. All rights reserved.</p>
     </footer>
   )
 }

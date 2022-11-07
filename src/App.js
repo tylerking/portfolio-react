@@ -148,7 +148,7 @@ function App() {
         </section>
         {/* Services */}
         <section id="Services">
-          <h3>Services</h3>
+          <h2>Services</h2>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               {serviceData.map((service, index) =>
@@ -164,7 +164,7 @@ function App() {
         </section>
         {/* Projects */}
         <section id="Projects">
-          <h3>Projects</h3>
+          <h2>Projects</h2>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               {projectData.map((project, index) =>
@@ -180,7 +180,7 @@ function App() {
         </section>
         {/* Contact */}
         <section id="Contact">
-          <h3>Contact</h3>
+          <h2>Contact</h2>
           <Contact />
         </section>
         {/* Footer */}
