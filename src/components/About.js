@@ -10,16 +10,20 @@ const About = ({description, name, social, title}) => {
         <h1>{name}</h1>
         <h3>{title}</h3>
         <div>{description}</div>
-        {social.map((social, index) =>
-          <Social
-            key={index}
-            name={social.name}
-            link={social.link}
-            icon={social.icon}
-          />
-        )}
+        
+        <div className="social">
+          <span>Connect:</span>
+          {social.map((social, index) =>
+            <Social
+              key={index}
+              name={social.name}
+              link={social.link}
+              icon={social.icon}
+            />
+          )}
+        </div>
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={6} sx={{ visibility: {xs: 'hidden', sm: 'visible'} }} >
         <img src={illustration} alt={name} />
       </Grid>
     </Grid>

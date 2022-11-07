@@ -11,6 +11,9 @@ $white: #f5f5f5;
 //Typography
 $font: 'Ubuntu', sans-serif;
 
+//Layout
+$radius: 3px;
+
 html {
   font-size: 100%; /*16px*/
   scroll-behavior: smooth;
@@ -55,6 +58,20 @@ section {
   max-width: 1248px;
 }
 
+.social {
+  background-color: #202030;
+  padding: 20px;
+  border-radius: $radius;
+  float: left;
+  margin-top: 50px;
+  a {
+    color: $white;
+    margin-right: 20px;
+  }
+  span {
+    margin-right: 20px;
+  }
+}
 /*
 .projects {
   display: flex;

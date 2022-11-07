@@ -4,7 +4,12 @@ import PropTypes from 'prop-types'
 
 const Social = ({icon, link, name}) => {
   return (
-    <a href={link} title={name}>
+    <a 
+      href={link} 
+      rel="noreferrer" 
+      target='_blank' 
+      title={name}
+      >
       {
         {
           'codepen': <FontAwesomeIcon icon={faCodepen} size='2x' />,
