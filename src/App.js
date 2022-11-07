@@ -5,7 +5,7 @@ import { BLOCKS, INLINES} from '@contentful/rich-text-types'
 
 // Material MUI
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress';
 import CssBaseline from '@mui/material/CssBaseline'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
@@ -124,9 +124,18 @@ function App() {
 
   if (!data) {
     return (
-      <div className='spinner'>
-        Spinner
-      </div>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          >
+          <Grid xs={1}>
+            <CircularProgress />
+          </Grid>
+        </Grid> 
+      </ThemeProvider>
     )
   }
 
@@ -137,46 +146,48 @@ function App() {
       <Container maxWidth='xl'>
         {/* About */}
         <section id="About">
-          <Box sx={{ flexGrow: 1 }}>
-            <About 
-              name={introData.name}
-              title={introData.title}
-              description={documentToReactComponents(introData.description.json, richTextOptions)}
-              social={socialData}
-            />
-          </Box>
+          <About 
+            name={introData.name}
+            title={introData.title}
+            description={documentToReactComponents(introData.description.json, richTextOptions)}
+            social={socialData}
+          />
         </section>
         {/* Services */}
         <section id="Services">
           <h2>Services</h2>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              {serviceData.map((service, index) =>
-                <Service
-                  key={index}
-                  title={service.title}
-                  icon={service.icon}
-                  description={documentToReactComponents(service.description.json, richTextOptions)}
-                />
-              )}
-            </Grid>
-          </Box>
+          <Grid
+            container
+            rowSpacing={10} 
+            spacing={2}
+            >
+            {serviceData.map((service, index) =>
+              <Service
+                key={index}
+                title={service.title}
+                icon={service.icon}
+                description={documentToReactComponents(service.description.json, richTextOptions)}
+              />
+            )}
+          </Grid>
         </section>
         {/* Projects */}
         <section id="Projects">
           <h2>Projects</h2>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              {projectData.map((project, index) =>
-                <Project
-                  key={index}
-                  title={project.title}
-                  image={project.image}
-                  description={documentToReactComponents(project.description.json, richTextOptions)}
-                />
-              )}
-            </Grid>
-          </Box>
+          <Grid
+            container
+            rowSpacing={10} 
+            spacing={2}
+            >
+            {projectData.map((project, index) =>
+              <Project
+                key={index}
+                title={project.title}
+                image={project.image}
+                description={documentToReactComponents(project.description.json, richTextOptions)}
+              />
+            )}
+          </Grid>
         </section>
         {/* Contact */}
         <section id="Contact">

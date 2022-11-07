@@ -64,7 +64,10 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container spacing={2}>
+      <Grid 
+        container
+        spacing={2}
+        >
         <Grid xs={12} md={6}>
           <TextField
             id='name'
