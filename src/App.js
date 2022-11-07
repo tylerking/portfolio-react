@@ -131,7 +131,7 @@ function App() {
           alignItems="center"
           justifyContent="center"
           >
-          <Grid xs={1}>
+          <Grid item xs={1}>
             <CircularProgress />
           </Grid>
         </Grid> 

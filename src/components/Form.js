@@ -72,7 +72,7 @@ const Form = () => {
           <TextField
             id='name'
             fullWidth
-            label='Required'
+            label='Name'
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -99,7 +99,7 @@ const Form = () => {
           <TextField
             id='email'
             fullWidth
-            label='Required'
+            label='Email'
             required
             type='email'
             value={email}
@@ -110,7 +110,7 @@ const Form = () => {
           <TextField
             id='number'
             fullWidth
-            label='Required'
+            label='Number'
             required
             value={number}
             onChange={(e) => setNumber(e.target.value)}
@@ -120,10 +120,10 @@ const Form = () => {
           <TextField
             id='message'
             fullWidth
-            label='Required'
+            label='Message'
             multiline
             required
-            rows={4}
+            rows={6}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
