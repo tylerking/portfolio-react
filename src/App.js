@@ -21,6 +21,26 @@ import Service from './components/Service'
 import SiteFooter from './components/SiteFooter'
 import SiteHeader from './components/SiteHeader'
 
+// Material Theme
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#ffa630',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+    background: {
+      default: '#121212',
+      paper: '#202030',
+    },
+    text: {
+      primary: '#f5f5f5',
+    },
+  },
+});
+
 // Contentful query
 const query = `
 {
@@ -81,13 +101,6 @@ const richTextOptions = {
   }
 }
 
-// Material Theme
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-})
-
 // App
 function App() {
   const [data, setData] = useState(null)
@@ -124,7 +137,7 @@ function App() {
 
   if (!data) {
     return (
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Grid
           container
@@ -140,7 +153,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <SiteHeader />
       <Container maxWidth='xl'>
