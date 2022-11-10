@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { faBookOpenReader, faCode, faLightbulb, faObjectGroup, faObjectUngroup, faRocket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +12,7 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
+import PropTypes from 'prop-types'
 import { Link as RouterLink } from 'react-router-dom'
 
 import richTextOptions from '../utils/richTextOptions'
@@ -58,6 +61,10 @@ const Workflow = ({workflowData}) => {
       </Timeline>
     </article>
   )
+}
+
+Workflow.propTypes = {
+  workflowData: PropTypes.array
 }
 
 export default Workflow
