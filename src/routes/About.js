@@ -1,14 +1,14 @@
 import React from 'react'
 
 const About = () => {
-	return (
-		<article id='about'>
-			<h1>About</h1>
+  return (
+    <article id='about'>
+      <h1>About</h1>
       Background
       Skills
       Tools
-		</article>
-	)
+    </article>
+  )
 }
 
 export default About

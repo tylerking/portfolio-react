@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { BLOCKS, INLINES} from '@contentful/rich-text-types'
 
 const richTextOptions = {

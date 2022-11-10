@@ -1,18 +1,18 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import richTextOptions from '../utils/richTextOptions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpenReader, faCode, faLightbulb, faObjectGroup, faObjectUngroup, faRocket } from '@fortawesome/free-solid-svg-icons'
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@mui/material/Link'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Timeline from '@mui/lab/Timeline'
-import TimelineItem from '@mui/lab/TimelineItem'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
 import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import TimelineDot from '@mui/lab/TimelineDot'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
+import { Link as RouterLink } from 'react-router-dom'
+
+import richTextOptions from '../utils/richTextOptions'
 
 const Workflow = ({workflowData}) => {
   return (
