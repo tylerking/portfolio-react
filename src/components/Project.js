@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 import Typography from '@mui/material/Typography'
 
-const Project = ({description, image, title, link}) => {
+const Project = ({description, image, title, demo, source}) => {
   return (
     <Grid item xs={12} sm={6}>
       <Card>
@@ -25,8 +25,8 @@ const Project = ({description, image, title, link}) => {
           {description}
         </CardContent>
         <CardActions>
-          <Button size='small'>Share</Button>
-          <Button size='small'>Learn More</Button>
+          {demo && <Button href={demo} size='small' target='_blank'>Visit Site</Button>}
+          {source && <Button href={source} size='small' target='_blank'>View Source</Button>}
         </CardActions>
       </Card>
     </Grid>

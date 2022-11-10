@@ -1,11 +1,10 @@
-import Grid from '@mui/material/Grid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartLine, faCode, faCoffee, faMap, faPenRuler, faUniversalAccess, faUsersBetweenLines } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 
 const Service = ({description, icon, title}) => {
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <div className='service'>
       {
         {
           'code': <FontAwesomeIcon icon={faCode} size='2x' />,
@@ -18,7 +17,7 @@ const Service = ({description, icon, title}) => {
       }
       <h3>{title}</h3>
       {description}
-    </Grid>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ const Social = ({icon, link, name}) => {
   return (
     <a 
       href={link} 
-      rel="noreferrer" 
+      rel='noreferrer' 
       target='_blank' 
       title={name}
       >

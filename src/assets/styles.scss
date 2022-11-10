@@ -1,17 +1,17 @@
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
 
-//Colors
+// Colors
 $black: #121212;
 $charcoal: #202030;
 $teal: #008080;
 $yellow: #FFA630;
 $white: #f5f5f5;
 
-//Typography
+// Typography
 $font: 'Ubuntu', sans-serif;
 
-//Layout
+// Layout
 $radius: 3px;
 
 html {
@@ -22,7 +22,6 @@ body {
   font-family: $font;
   font-weight: 400;
   line-height: 1.75;
-  padding-top: 69px;
 }
 p {margin-bottom: 1rem;}
 h1, h2, h3, h4, h5 {
@@ -48,9 +47,14 @@ h5 {font-size: 1.2rem;}
 small, .text_small {font-size: 0.833rem;}
 
 
+article {
+  /*min-height: 100vh;*/
+  margin-top: 69px;
+}
+
 section {
-  min-height: 100vh;
-  padding-top: 69px;
+  padding-bottom: 1.5rem;
+  padding-top: 4.5rem;
 }
 
 .container {
@@ -58,6 +62,14 @@ section {
   max-width: 1248px;
 }
 
+#companies {
+  text-align: center;
+  img {
+    max-height: 30px;
+    max-width: 150px;
+    filter: brightness(0) invert(1);
+  }
+}
 .social {
   background-color: #202030;
   padding: 20px;
@@ -72,27 +84,3 @@ section {
     margin-right: 20px;
   }
 }
-/*
-.projects {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .project {
-    width: 50%;
-    img {
-      width: 200px;
-    }
-  }
-}
-
-.services {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .service {
-    width: 33%;
-  }
-}
-*/

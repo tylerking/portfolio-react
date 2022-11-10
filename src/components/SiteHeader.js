@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -15,7 +16,8 @@ import { faDownload, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../assets/logo.svg'
 
-const pages = ['About', 'Services', 'Projects', 'Contact']
+const pages = ['Workflow', 'Projects', 'About', 'Contact', '404']
+
 
 function SiteHeader() { 
   const [anchorElNav, setAnchorElNav] = React.useState(null)
@@ -30,18 +32,37 @@ function SiteHeader() {
   return (
     <AppBar position='fixed'>
       <Container maxWidth='xl'>
+      
         <Toolbar disableGutters>
-          <Box
-            href='/'
-            sx={{
-              mr: 2,
-              display: { md: 'flex' },
-            }}
-          >
+          <Box href='/' sx={{ mr: 2, display: { md: 'flex' }}}>
             <img src={logo} alt='Tyler King' />
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              <Link component={RouterLink} to='/'>Home</Link>
+            </Button>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <Link component={RouterLink} key={page} to={page}>{page}</Link>
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Button href='www.google.com' variant='contained'>
+              <FontAwesomeIcon icon={faDownload} size='1x' />&nbsp;Resume
+            </Button>
+          </Box>
+
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               aria-controls='menu-appbar'
               aria-haspopup='true'
@@ -69,30 +90,17 @@ function SiteHeader() {
                 horizontal: 'left',
               }}
             >
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link component={RouterLink} to='/'>Home</Link>
+              </MenuItem>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
+                  <Typography textAlign='center'>
+                    <Link component={RouterLink} key={page} to={page}>{page}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link href={`#${page}`}>{page}</Link>
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Button href="www.google.com" variant='contained'>
-              <FontAwesomeIcon icon={faDownload} size='1x' />&nbsp;Resume
-            </Button>
           </Box>
 
         </Toolbar>

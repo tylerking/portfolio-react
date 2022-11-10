@@ -1,11 +1,10 @@
 // Modules
 import React, { useEffect, useState } from 'react'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS, INLINES} from '@contentful/rich-text-types'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Material MUI
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress'
 import CssBaseline from '@mui/material/CssBaseline'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
@@ -13,37 +12,50 @@ import Grid from '@mui/material/Grid'
 // Styles
 import './assets/styles.scss'
 
-// Components
-import About from './components/About'
-import Contact from './components/Contact'
-import Project from './components/Project'
-import Service from './components/Service'
-import SiteFooter from './components/SiteFooter'
+// Routes
+import About from './routes/About'
+import Contact from './routes/Contact'
+import Home from './routes/Home'
+import NotFound from './routes/NotFound'
+import Projects from './routes/Projects'
+import Workflow from './routes/Workflow'
+
+// Componets
 import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
 
 // Material Theme
 const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#ffa630',
+      main: '#008080',
     },
     secondary: {
       main: '#f50057',
     },
     background: {
       default: '#121212',
-      paper: '#202030',
+      paper: '#121212',
     },
     text: {
       primary: '#f5f5f5',
     },
   },
-});
+})
 
 // Contentful query
 const query = `
 {
+  companyCollection(order: [order_ASC]) {
+    items {
+      logo {
+        title
+        url
+      }
+      name
+    }
+  }
   globalCollection {
     items {
       description {
@@ -63,14 +75,16 @@ const query = `
       description {
         json
       }
+      demo
       image {
         title
         url
       }
+      source
       title
     }
   }
-  serviceCollection {
+  serviceCollection(order: [order_ASC]) {
     items {
       description {
         json
@@ -86,28 +100,29 @@ const query = `
       icon
     }
   }
-}
-`
-
-// Contentful rich text
-const richTextOptions = {
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => {
-      return <p>{children}</p>
-    },
-    [INLINES.HYPERLINK]: (node,children) => {
-      return <a href={node.data.uri}>{children}</a>
+  workflowCollection(order: [order_ASC]) {
+    items {
+      description {
+        json
+      }
+      case
+      icon
+      link
+      title
     }
   }
 }
+`
 
 // App
 function App() {
   const [data, setData] = useState(null)
+  const [companyData, setCompanyData] = useState(null)
   const [introData, setAboutData] = useState(null)
   const [projectData, setProjectData] = useState(null)
   const [serviceData, setServiceData] = useState(null)
   const [socialData, setSocialData] = useState(null)
+  const [workflowData, setWorkflowData] = useState(null)
 
   useEffect(() => {
     const CONTENTFUL_BEARER = process.env.REACT_APP_CONTENTFUL_BEARER
@@ -120,6 +135,7 @@ function App() {
         },
         // send GraphQL query
         body: JSON.stringify({ query }),
+        order: 'fields.myCustomDateField'
       })
       .then((response) => response.json())
       .then(({ data, errors }) => {
@@ -129,9 +145,11 @@ function App() {
         // rerender the entire component with new data
         setData(data)
         setAboutData(data.globalCollection.items[0])
+        setCompanyData(data.companyCollection.items)
         setProjectData(data.projectCollection.items)
         setServiceData(data.serviceCollection.items)
         setSocialData(data.socialCollection.items)
+        setWorkflowData(data.workflowCollection.items)
       })
   }, [])
 
@@ -141,8 +159,8 @@ function App() {
         <CssBaseline />
         <Grid
           container
-          alignItems="center"
-          justifyContent="center"
+          alignItems='center'
+          justifyContent='center'
           >
           <Grid item xs={1}>
             <CircularProgress />
@@ -153,64 +171,30 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <SiteHeader />
-      <Container maxWidth='xl'>
-        {/* About */}
-        <section id="About">
-          <About 
-            name={introData.name}
-            title={introData.title}
-            description={documentToReactComponents(introData.description.json, richTextOptions)}
-            social={socialData}
-          />
-        </section>
-        {/* Services */}
-        <section id="Services">
-          <h2>Services</h2>
-          <Grid
-            container
-            rowSpacing={10} 
-            spacing={2}
-            >
-            {serviceData.map((service, index) =>
-              <Service
-                key={index}
-                title={service.title}
-                icon={service.icon}
-                description={documentToReactComponents(service.description.json, richTextOptions)}
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <SiteHeader />
+        <Container maxWidth='xl'>
+          <Routes>
+            <Route path='/' element={
+              <Home 
+                introData={introData}
+                companyData={companyData}
+                serviceData={serviceData}
+                socialData={socialData}
               />
-            )}
-          </Grid>
-        </section>
-        {/* Projects */}
-        <section id="Projects">
-          <h2>Projects</h2>
-          <Grid
-            container
-            rowSpacing={10} 
-            spacing={2}
-            >
-            {projectData.map((project, index) =>
-              <Project
-                key={index}
-                title={project.title}
-                image={project.image}
-                description={documentToReactComponents(project.description.json, richTextOptions)}
-              />
-            )}
-          </Grid>
-        </section>
-        {/* Contact */}
-        <section id="Contact">
-          <h2>Contact</h2>
-          <Contact />
-        </section>
-        {/* Footer */}
-        <SiteFooter />
-      </Container>
-    </ThemeProvider>
+            } />
+            <Route path='/workflow' element={<Workflow workflowData={workflowData}/>} />
+            <Route path='/projects' element={<Projects data={projectData} />} />
+            <Route path='/about' element={<About/>} />
+            <Route path='/contact' element={<Contact/>} />
+            <Route path='*' element={<NotFound/>} />
+          </Routes>
+          <SiteFooter />
+        </Container>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
 
