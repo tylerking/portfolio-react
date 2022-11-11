@@ -5,6 +5,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.13.2",
+    "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",

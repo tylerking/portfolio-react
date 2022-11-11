@@ -8,8 +8,6 @@ import Grid from '@mui/material/Grid'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-// Material MUI
-
 // Styles
 import './assets/styles.scss'
 
@@ -22,8 +20,6 @@ import Home from './routes/Home'
 import NotFound from './routes/NotFound'
 import Projects from './routes/Projects'
 import Workflow from './routes/Workflow'
-
-// Componets
 
 // Material Theme
 const theme = createTheme({
@@ -48,6 +44,14 @@ const theme = createTheme({
 // Contentful query
 const query = `
 {
+  aboutCollection {
+    items {
+      bio {
+        json
+      }
+      title
+    }
+  }
   companyCollection(order: [order_ASC]) {
     items {
       logo {
@@ -62,8 +66,20 @@ const query = `
       description {
         json
       }
-      name
       title
+    }
+  }
+  homeCollection {
+    items {
+      description {
+        json
+      }
+      title
+      name
+      primaryLink
+      primaryLinkText
+      secondaryLink
+      secondaryLinkText
     }
   }
   linkCollection {
@@ -94,7 +110,14 @@ const query = `
       title
     }
   }
-  socialCollection {
+  skillCollection {
+    items {
+      skill
+      title
+      tool
+    }
+  }
+  socialCollection(order: [order_ASC]) {
     items {
       name
       link
@@ -118,10 +141,12 @@ const query = `
 // App
 function App() {
   const [data, setData] = useState(null)
+  const [aboutData, setAboutData] = useState(null)
   const [companyData, setCompanyData] = useState(null)
-  const [introData, setAboutData] = useState(null)
+  const [homeData, setHomeData] = useState(null)
   const [projectData, setProjectData] = useState(null)
   const [serviceData, setServiceData] = useState(null)
+  const [skillData, setSkillData] = useState(null)
   const [socialData, setSocialData] = useState(null)
   const [workflowData, setWorkflowData] = useState(null)
 
@@ -145,10 +170,12 @@ function App() {
         }
         // rerender the entire component with new data
         setData(data)
-        setAboutData(data.globalCollection.items[0])
+        setAboutData(data.aboutCollection.items[0])
         setCompanyData(data.companyCollection.items)
+        setHomeData(data.homeCollection.items[0])
         setProjectData(data.projectCollection.items)
         setServiceData(data.serviceCollection.items)
+        setSkillData(data.skillCollection.items[0])
         setSocialData(data.socialCollection.items)
         setWorkflowData(data.workflowCollection.items)
       })
@@ -180,15 +207,20 @@ function App() {
           <Routes>
             <Route path='/' element={
               <Home 
-                introData={introData}
+                homeData={homeData}
                 companyData={companyData}
                 serviceData={serviceData}
                 socialData={socialData}
               />
-            } />
+            }/>
             <Route path='/workflow' element={<Workflow workflowData={workflowData}/>} />
             <Route path='/projects' element={<Projects data={projectData} />} />
-            <Route path='/about' element={<About/>} />
+            <Route path='/about' element={
+              <About 
+                aboutData={aboutData} 
+                skillData={skillData}  
+              />
+            }/>
             <Route path='/contact' element={<Contact/>} />
             <Route path='*' element={<NotFound/>} />
           </Routes>

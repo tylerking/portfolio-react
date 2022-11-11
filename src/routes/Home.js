@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
@@ -9,20 +12,22 @@ import Service from '../components/Service'
 import Social from '../components/Social'
 import richTextOptions from '../utils/richTextOptions'
 
-const Home = ({companyData, introData, serviceData, socialData}) => {
+const Home = ({companyData, homeData, serviceData, socialData}) => {
   return (
     <article id='home'>
 
       <section id='intro'>
-        <h1>{introData.name}</h1>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <h3>{introData.title}</h3>
-            <div>{documentToReactComponents(introData.description.json, richTextOptions)}</div>
-
-            - Download Resume
-            - View My Process
-            
+            <h1>{homeData.title}</h1>
+            <div>{documentToReactComponents(homeData.description.json, richTextOptions)}</div>
+            <div className='cta'>
+              <Button href={homeData.primaryLink} variant="contained">{homeData.primaryLinkText}</Button>
+              <Button href={homeData.secondaryLink} variant="text">
+                {homeData.secondaryLinkText} &nbsp;
+                <FontAwesomeIcon icon={faArrowRight} size='1x' />
+              </Button>
+            </div>
             <div className='social'>
               <span>Connect:</span>
               {socialData.map((social, index) =>
@@ -36,7 +41,7 @@ const Home = ({companyData, introData, serviceData, socialData}) => {
             </div>
           </Grid>
           <Grid item xs={12} sm={6} sx={{ display: {xs: 'none', sm: 'flex'} }} >
-            <img src={illustration} alt={introData.name} />
+            <img src={illustration} alt={homeData.name} />
           </Grid>
         </Grid>    
       </section>
@@ -84,7 +89,7 @@ const Home = ({companyData, introData, serviceData, socialData}) => {
 
 Home.propTypes = {
   companyData: PropTypes.array,
-  introData: PropTypes.object,
+  homeData: PropTypes.object,
   serviceData: PropTypes.array,
   socialData: PropTypes.array
 }
