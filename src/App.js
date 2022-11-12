@@ -19,7 +19,7 @@ import Contact from './routes/Contact'
 import Home from './routes/Home'
 import NotFound from './routes/NotFound'
 import Projects from './routes/Projects'
-import Workflow from './routes/Workflow'
+import Services from './routes/Services'
 
 // Material Theme
 const theme = createTheme({
@@ -47,6 +47,9 @@ const query = `
   aboutCollection {
     items {
       bio {
+        json
+      }
+      intro {
         json
       }
       title
@@ -209,16 +212,16 @@ function App() {
               <Home 
                 homeData={homeData}
                 companyData={companyData}
-                serviceData={serviceData}
-                socialData={socialData}
+                workflowData={workflowData}
               />
             }/>
-            <Route path='/workflow' element={<Workflow workflowData={workflowData}/>} />
-            <Route path='/projects' element={<Projects data={projectData} />} />
+            <Route path='/services' element={<Services serviceData={serviceData} />} />
+            <Route path='/projects' element={<Projects projectData={projectData} />} />
             <Route path='/about' element={
               <About 
                 aboutData={aboutData} 
-                skillData={skillData}  
+                skillData={skillData}
+                socialData={socialData}
               />
             }/>
             <Route path='/contact' element={<Contact/>} />

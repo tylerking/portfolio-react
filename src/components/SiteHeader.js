@@ -16,7 +16,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import logo from '../assets/logo.svg'
 
-const pages = ['Workflow', 'Projects', 'About', 'Contact', '404']
+const pages = ['Services', 'Projects', 'About', 'Contact', '404']
 
 
 function SiteHeader() { 

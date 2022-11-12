@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import Project from '../components/Project'
 import richTextOptions from '../utils/richTextOptions'
 
-const Projects = ({data}) => {
+const Projects = ({projectData}) => {
   return (
     <article id='projects'>
       <h1>Projects</h1>
@@ -16,7 +16,7 @@ const Projects = ({data}) => {
         rowSpacing={10} 
         spacing={2}
       >
-        {data.map((project, index) =>
+        {projectData.map((project, index) =>
           <Project
             key={index}
             title={project.title}
@@ -32,7 +32,7 @@ const Projects = ({data}) => {
 }
 
 Projects.propTypes = {
-  data: PropTypes.array
+  projectData: PropTypes.array
 }
 
 export default Projects
