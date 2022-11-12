@@ -20,7 +20,7 @@ import Contact from './routes/Contact'
 import Home from './routes/Home'
 import NotFound from './routes/NotFound'
 import Services from './routes/Services'
-
+import ScrollToTop from './utils/scrollToTop'
 // Components
 
 // Material Theme
@@ -216,6 +216,7 @@ function App() {
         subtitle={data.subtitle}
         title={data.title}
       />
+      <ScrollToTop />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SiteHeader />

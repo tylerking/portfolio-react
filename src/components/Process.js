@@ -21,6 +21,7 @@ const Process = ({processData}) => {
   return (
     <article id='process'>
       <h2>How I Work</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <Timeline position='alternate'>
         {processData.map((stage, index) =>
           <TimelineItem key={index}>
