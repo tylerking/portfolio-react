@@ -90,6 +90,24 @@ section {
   }
 }
 
+.service {
+  background-color: #202030;
+  border-radius: $radius;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  max-width: 900px;
+  padding: 50px;
+
+  img {
+    border-radius: $radius;
+    max-height: 300px;
+    width: 100%;
+    &.even {
+      float: right;
+    }
+  }
+}
+
 .social {
   background-color: #202030;
   padding: 20px;

@@ -81,14 +81,28 @@ const query = `
       }
       title
       primaryLink
-      primaryLinkText
+      primaryText
       secondaryLink
-      secondaryLinkText
+      secondaryText
     }
   }
   linkCollection {
     items {
       name
+    }
+  }
+  processCollection(order: [order_ASC]) {
+    items {
+      case
+      description {
+        json
+      }
+      image {
+        title
+        url
+      }
+      link
+      title
     }
   }
   projectCollection(order: [order_ASC]) {
@@ -110,7 +124,10 @@ const query = `
       description {
         json
       }
-      icon
+      image {
+        title
+        url
+      }
       title
     }
   }
@@ -128,17 +145,6 @@ const query = `
       icon
     }
   }
-  workflowCollection(order: [order_ASC]) {
-    items {
-      description {
-        json
-      }
-      case
-      icon
-      link
-      title
-    }
-  }
 }
 `
 
@@ -152,7 +158,7 @@ function App() {
   const [serviceData, setServiceData] = useState(null)
   const [skillData, setSkillData] = useState(null)
   const [socialData, setSocialData] = useState(null)
-  const [workflowData, setWorkflowData] = useState(null)
+  const [processData, setProcessData] = useState(null)
 
   useEffect(() => {
     const CONTENTFUL_BEARER = process.env.REACT_APP_CONTENTFUL_BEARER
@@ -181,7 +187,7 @@ function App() {
         setServiceData(data.serviceCollection.items)
         setSkillData(data.skillCollection.items[0])
         setSocialData(data.socialCollection.items)
-        setWorkflowData(data.workflowCollection.items)
+        setProcessData(data.processCollection.items)
       })
   }, [])
 
@@ -220,7 +226,7 @@ function App() {
                 homeData={homeData}
                 companyData={companyData}
                 projectData={projectData}
-                workflowData={workflowData}
+                processData={processData}
               />
             }/>
             <Route path='/services' element={<Services serviceData={serviceData} />} />
@@ -228,13 +234,12 @@ function App() {
               <About 
                 aboutData={aboutData} 
                 skillData={skillData}
-                socialData={socialData}
               />
             }/>
             <Route path='/contact' element={<Contact/>} />
             <Route path='*' element={<NotFound/>} />
           </Routes>
-          <SiteFooter />
+          <SiteFooter socialData={socialData} />
         </Container>
       </ThemeProvider>
     </BrowserRouter>

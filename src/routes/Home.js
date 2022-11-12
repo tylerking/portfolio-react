@@ -1,17 +1,17 @@
 import React from 'react'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
 import Project from '../components/Project'
-import Workflow from '../components/Workflow'
+import Process from '../components/Process'
 import richTextOptions from '../utils/richTextOptions'
 
-const Home = ({companyData, homeData, projectData, workflowData}) => {
+const Home = ({companyData, homeData, projectData, processData}) => {
   return (
     <article id='home'>
 
@@ -23,10 +23,13 @@ const Home = ({companyData, homeData, projectData, workflowData}) => {
             </h1>
             <div>{documentToReactComponents(homeData.description.json, richTextOptions)}</div>
             <div className='cta'>
-              <Button href={homeData.primaryLink} variant="contained">{homeData.primaryLinkText}</Button>
+              <Button href={homeData.primaryLink} variant="contained">
+                {homeData.primaryText} &nbsp;
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='1x' />
+              </Button>
               <Button href={homeData.secondaryLink} variant="text">
-                {homeData.secondaryLinkText} &nbsp;
-                <FontAwesomeIcon icon={faArrowRight} size='1x' />
+                {homeData.secondaryText} &nbsp;
+                <FontAwesomeIcon icon={faArrowDown} size='1x' />
               </Button>
             </div>
           </Grid>
@@ -69,7 +72,7 @@ const Home = ({companyData, homeData, projectData, workflowData}) => {
       </section>
 
       <section id='process'>
-        <Workflow workflowData={workflowData} />
+        <Process processData={processData} />
       </section>
 
     </article>
@@ -80,7 +83,7 @@ Home.propTypes = {
   companyData: PropTypes.array,
   homeData: PropTypes.object,
   projectData: PropTypes.array,
-  workflowData: PropTypes.array
+  processData: PropTypes.array
 }
 
 export default Home

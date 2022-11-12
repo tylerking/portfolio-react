@@ -17,12 +17,12 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import richTextOptions from '../utils/richTextOptions'
 
-const Workflow = ({workflowData}) => {
+const Process = ({processData}) => {
   return (
-    <article id='workflow'>
+    <article id='process'>
       <h2>How I Work</h2>
       <Timeline position='alternate'>
-        {workflowData.map((stage, index) =>
+        {processData.map((stage, index) =>
           <TimelineItem key={index}>
             {stage.case && 
               <TimelineOppositeContent
@@ -39,13 +39,13 @@ const Workflow = ({workflowData}) => {
               <TimelineDot>
                 {
                   {
-                    'code': <FontAwesomeIcon icon={faCode} size='2x' />,
-                    'book-open-reader': <FontAwesomeIcon icon={faBookOpenReader} size='2x' />,
-                    'lightbulb': <FontAwesomeIcon icon={faLightbulb} size='2x' />,
-                    'object-group': <FontAwesomeIcon icon={faObjectGroup} size='2x' />,
-                    'object-ungroup': <FontAwesomeIcon icon={faObjectUngroup} size='2x' />,
-                    'rocket': <FontAwesomeIcon icon={faRocket} size='2x' />
-                  }[stage.icon] || <FontAwesomeIcon icon={faCode} size='2x' />
+                    'Ideation': <FontAwesomeIcon icon={faLightbulb} size='2x' />,
+                    'Discovery': <FontAwesomeIcon icon={faBookOpenReader} size='2x' />,
+                    'Prototype': <FontAwesomeIcon icon={faObjectUngroup} size='2x' />,
+                    'Design': <FontAwesomeIcon icon={faObjectGroup} size='2x' />,
+                    'Develop': <FontAwesomeIcon icon={faCode} size='2x' />,
+                    'Release': <FontAwesomeIcon icon={faRocket} size='2x' />
+                  }[stage.title] || <FontAwesomeIcon icon={faCode} size='2x' />
                 }
               </TimelineDot>
               <TimelineConnector />
@@ -63,8 +63,8 @@ const Workflow = ({workflowData}) => {
   )
 }
 
-Workflow.propTypes = {
-  workflowData: PropTypes.array
+Process.propTypes = {
+  processData: PropTypes.array
 }
 
-export default Workflow
+export default Process

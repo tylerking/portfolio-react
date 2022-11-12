@@ -14,10 +14,9 @@ import ListItemText from '@mui/material/ListItemText'
 import Paper from '@mui/material/Paper'
 import PropTypes from 'prop-types'
 
-import Social from '../components/Social'
 import richTextOptions from '../utils/richTextOptions'
 
-const About = ({aboutData, skillData,socialData}) => {
+const About = ({aboutData, skillData}) => {
   return (
     <article id='about'>
       <h1>{aboutData.title}</h1>
@@ -27,17 +26,6 @@ const About = ({aboutData, skillData,socialData}) => {
         - 30+ Professional Projects
         - 11 Github Repositories
         - 00 Badges on Treehouse
-      </div>
-      <div className='social'>
-        <span>Connect:</span>
-        {socialData.map((social, index) =>
-          <Social
-            key={index}
-            name={social.name}
-            link={social.link}
-            icon={social.icon}
-          />
-        )}
       </div>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={8}>
@@ -107,8 +95,7 @@ const About = ({aboutData, skillData,socialData}) => {
 
 About.propTypes = {
   aboutData: PropTypes.object,
-  skillData: PropTypes.object,
-  socialData: PropTypes.array
+  skillData: PropTypes.object
 }
 
 export default About
