@@ -16,7 +16,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import logo from '../assets/logo.svg'
 
-const pages = ['Services', 'Projects', 'About', 'Contact', '404']
+const pages = ['Services', 'About', 'Contact', '404']
 
 
 function SiteHeader() { 
@@ -35,16 +35,12 @@ function SiteHeader() {
       
         <Toolbar disableGutters>
           <Box href='/' sx={{ mr: 2, display: { md: 'flex' }}}>
-            <img src={logo} alt='Tyler King' />
+            <Link component={RouterLink} to='/'>
+              <img src={logo} alt='Tyler King' />
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              <Link component={RouterLink} to='/'>Home</Link>
-            </Button>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -90,9 +86,6 @@ function SiteHeader() {
                 horizontal: 'left',
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link component={RouterLink} to='/'>Home</Link>
-              </MenuItem>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign='center'>

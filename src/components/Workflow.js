@@ -20,7 +20,7 @@ import richTextOptions from '../utils/richTextOptions'
 const Workflow = ({workflowData}) => {
   return (
     <article id='workflow'>
-      <h1>Workflow</h1>
+      <h2>How I Work</h2>
       <Timeline position='alternate'>
         {workflowData.map((stage, index) =>
           <TimelineItem key={index}>

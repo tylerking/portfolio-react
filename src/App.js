@@ -19,7 +19,6 @@ import About from './routes/About'
 import Contact from './routes/Contact'
 import Home from './routes/Home'
 import NotFound from './routes/NotFound'
-import Projects from './routes/Projects'
 import Services from './routes/Services'
 
 // Components
@@ -69,9 +68,9 @@ const query = `
   }
   globalCollection {
     items {
-      description {
-        json
-      }
+      description
+      keywords
+      subtitle
       title
     }
   }
@@ -81,7 +80,6 @@ const query = `
         json
       }
       title
-      name
       primaryLink
       primaryLinkText
       secondaryLink
@@ -93,7 +91,7 @@ const query = `
       name
     }
   }
-  projectCollection {
+  projectCollection(order: [order_ASC]) {
     items {
       description {
         json
@@ -175,7 +173,7 @@ function App() {
           console.error(errors)
         }
         // rerender the entire component with new data
-        setData(data)
+        setData(data.globalCollection.items[0])
         setAboutData(data.aboutCollection.items[0])
         setCompanyData(data.companyCollection.items)
         setHomeData(data.homeCollection.items[0])
@@ -206,10 +204,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <SEO 
-        title='Tyler King'
-        siteTitle='Software Engineer & Product Developer'
-        description={homeData.description}
+      <SEO
+        description={data.description}
+        keywords={data.keywords}
+        subtitle={data.subtitle}
+        title={data.title}
       />
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -220,11 +219,11 @@ function App() {
               <Home 
                 homeData={homeData}
                 companyData={companyData}
+                projectData={projectData}
                 workflowData={workflowData}
               />
             }/>
             <Route path='/services' element={<Services serviceData={serviceData} />} />
-            <Route path='/projects' element={<Projects projectData={projectData} />} />
             <Route path='/about' element={
               <About 
                 aboutData={aboutData} 

@@ -7,10 +7,11 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
+import Project from '../components/Project'
 import Workflow from '../components/Workflow'
 import richTextOptions from '../utils/richTextOptions'
 
-const Home = ({companyData, homeData, workflowData}) => {
+const Home = ({companyData, homeData, projectData, workflowData}) => {
   return (
     <article id='home'>
 
@@ -19,8 +20,6 @@ const Home = ({companyData, homeData, workflowData}) => {
           <Grid item xs={12} sm={7}>
             <h1>
               {homeData.title}
-              <br/>
-              {homeData.name}
             </h1>
             <div>{documentToReactComponents(homeData.description.json, richTextOptions)}</div>
             <div className='cta'>
@@ -49,13 +48,30 @@ const Home = ({companyData, homeData, workflowData}) => {
         </Grid>
       </section>
 
+      <section id='featured'>
+        <h2>Latest Projects</h2>
+        <Grid
+          container
+          rowSpacing={10} 
+          spacing={2}
+        >
+          {projectData.map((project, index) =>
+            <Project
+              key={index}
+              title={project.title}
+              image={project.image}
+              demo={project.demo}
+              source={project.source}
+              description={documentToReactComponents(project.description.json, richTextOptions)}
+            />
+          )}
+        </Grid>
+      </section>
+
       <section id='process'>
         <Workflow workflowData={workflowData} />
       </section>
 
-      <section id='featured'>
-        <h2>Latest Project</h2>
-      </section>
     </article>
   )
 }
@@ -63,6 +79,7 @@ const Home = ({companyData, homeData, workflowData}) => {
 Home.propTypes = {
   companyData: PropTypes.array,
   homeData: PropTypes.object,
+  projectData: PropTypes.array,
   workflowData: PropTypes.array
 }
 
