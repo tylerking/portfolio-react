@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './assets/styles.scss'
 
 // Routes
+import SEO from './components/Seo'
 import SiteFooter from './components/SiteFooter'
 import SiteHeader from './components/SiteHeader'
 import About from './routes/About'
@@ -20,6 +21,8 @@ import Home from './routes/Home'
 import NotFound from './routes/NotFound'
 import Projects from './routes/Projects'
 import Services from './routes/Services'
+
+// Components
 
 // Material Theme
 const theme = createTheme({
@@ -203,6 +206,11 @@ function App() {
 
   return (
     <BrowserRouter>
+      <SEO 
+        title='Tyler King'
+        siteTitle='Software Engineer & Product Developer'
+        description={homeData.description}
+      />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SiteHeader />
