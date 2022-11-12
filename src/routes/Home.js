@@ -7,8 +7,8 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
-import Project from '../components/Project'
 import Process from '../components/Process'
+import Project from '../components/Project'
 import richTextOptions from '../utils/richTextOptions'
 
 const Home = ({companyData, homeData, projectData, processData}) => {
