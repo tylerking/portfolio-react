@@ -1,9 +1,66 @@
 import React, { useEffect, useState } from 'react'
 
-import Paper from '@mui/material/Paper'
+import { 
+  faCss3, faDigitalOcean, faDocker, faFigma, faGit, faGulp, faHtml5, faJira, faJs,
+  faLess, faNodeJs, faReact, faSass, faVuejs } from '@fortawesome/free-brands-svg-icons'
+import { faDatabase, faImage, faNetworkWired, faServer} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Chip from '@mui/material/Chip'
+import Container from '@mui/material/Container'
 import Grid from '@mui/material/Unstable_Grid2'
+import PropTypes from 'prop-types'
 
-const Stats = () => {
+const iconSkills = (icon) => {
+  switch (icon) {
+  case 'JavaScript':
+    return <FontAwesomeIcon icon={faJs} size='1x' />
+  case 'Node':
+    return <FontAwesomeIcon icon={faNodeJs} size='1x' />
+  case 'React':
+    return <FontAwesomeIcon icon={faReact} size='1x' />
+  case 'Vue':
+    return <FontAwesomeIcon icon={faVuejs} size='1x' />
+  case 'Gulp':
+    return <FontAwesomeIcon icon={faGulp} size='1x' />
+  case 'CSS3':
+    return <FontAwesomeIcon icon={faCss3} size='1x' />
+  case 'Less':
+    return <FontAwesomeIcon icon={faLess} size='1x' />
+  case 'SASS':
+    return <FontAwesomeIcon icon={faSass} size='1x' />
+  case 'HTML5':
+    return <FontAwesomeIcon icon={faHtml5} size='1x' />
+  default:
+    return <FontAwesomeIcon icon={faServer} size='1x' />
+  }
+}
+
+const iconTools = (icon) => {
+  switch (icon) {
+  case 'GIT':
+    return <FontAwesomeIcon icon={faGit} size='1x' />
+  case 'Docker':
+    return <FontAwesomeIcon icon={faDocker} size='1x' />
+  case 'Jira':
+    return <FontAwesomeIcon icon={faJira} size='1x' />
+  case 'MongoDB':
+    return <FontAwesomeIcon icon={faDatabase} size='1x' />
+  case 'Headless APIs':
+    return <FontAwesomeIcon icon={faServer} size='1x' />
+  case 'Netlify':
+    return <FontAwesomeIcon icon={faNetworkWired} size='1x' />
+  case 'Digital Ocean':
+    return <FontAwesomeIcon icon={faDigitalOcean} size='1x' />
+  case 'Figma':
+    return <FontAwesomeIcon icon={faFigma} size='1x' />
+  case 'Adobe CS':
+    return <FontAwesomeIcon icon={faImage} size='1x' />
+  default:
+    return <FontAwesomeIcon icon={faServer} size='1x' />
+  }
+}
+
+const Stats = ({skillData}) => {
   const [githubData, setGithubData] = useState([])
   const [treehouseData, setTreehouseData] = useState()
   const githubUser = 'tylerking'
@@ -25,25 +82,45 @@ const Stats = () => {
   }, [])
   
   return (
-    <section id='stats'>
-      <Paper>
+    <section className='skillset'>
+      <Container>
         <Grid container spacing={2}>
           <Grid xs={3}>
-            <span>10+</span> Years Experience
+            <h3>10+</h3>
+            <span>Years Experience</span>
           </Grid>
           <Grid xs={3}>
-            <span>50+</span> Projects Done
+            <h3>50+</h3>
+            <span>Projects Done</span>
           </Grid>
           <Grid xs={3}>
-            <span>{githubData.public_repos}</span> Github Repos
+            <h3>{githubData.public_repos}</h3>
+            <span>Github Repos</span>
           </Grid>
           <Grid xs={3}>
-            <span>{treehouseData}</span> Treehouse Badges
+            <h3>{treehouseData}</h3>
+            <span>Treehouse Badges</span>
+          </Grid>
+          <Grid xs={12} md={6}>
+            <h4>{skillData.title}</h4>
+            {skillData.skill.map((skill, index) =>
+              <Chip icon={iconSkills(skill)} key={index} label={skill} />
+            )}
+          </Grid>
+          <Grid xs={4} md={6}>
+            <h4>Tools</h4>
+            {skillData.tool.map((tool, index) =>
+              <Chip icon={iconTools(tool)} key={index} label={tool} />
+            )}
           </Grid>
         </Grid>
-      </Paper>
+      </Container>
     </section>
   )
+}
+
+Stats.propTypes = {
+  skillData: PropTypes.object
 }
 
 export default Stats

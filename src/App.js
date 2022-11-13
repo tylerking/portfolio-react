@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 
 import CircularProgress from '@mui/material/CircularProgress'
-import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -221,10 +220,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SiteHeader />
-        <Container maxWidth='xl'>
+        <main>
           <Routes>
             <Route path='/' element={
-              <Home 
+              <Home
+                id='home'
                 homeData={homeData}
                 companyData={companyData}
                 projectData={projectData}
@@ -241,7 +241,7 @@ function App() {
             <Route path='/contact' element={<Contact/>} />
             <Route path='*' element={<NotFound/>} />
           </Routes>
-        </Container>
+        </main>
         <SiteFooter socialData={socialData} />
       </ThemeProvider>
     </BrowserRouter>

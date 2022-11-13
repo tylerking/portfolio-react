@@ -2,19 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
 @import url('reset.css');
 
-// Colors
+// Variables
 $black: #121212;
 $charcoal: #191919;
+$grey: #353535;
 $teal: #008080;
 $white: #EBFFFF;
-
-// Typography
 $font: 'Ubuntu', sans-serif;
-
-// Layout
 $radius: 3px;
-$space: 2.5rem;
+$space: 20px;
+$whitespace: 2.5rem;
 
+// Global
 html {
   font-size: 100%; /*16px*/
   scroll-behavior: smooth;
@@ -24,139 +23,124 @@ body {
   font-weight: 400;
   line-height: 1.75;
 }
+
+// Typography
 p {margin-bottom: 1rem;}
 h1, h2, h3, h4, h5 {
   font-family: $font;
   font-weight: 400;
   line-height: 1.3;
-  margin: 3rem 0 1.38rem;
+  margin: 0 0 1.38rem;
 }
-h1 {
-  margin-top: 0;
-  font-size: 3.052rem;
-}
+h1 {font-size: 3.052rem;}
 h2 {font-size: 2.441rem;}
 h3 {font-size: 1.953rem;}
 h4 {font-size: 1.563rem;}
 h5 {font-size: 1.25rem;}
 small, .text_small {font-size: 0.8rem;}
 
-
-article {
-  /*min-height: 100vh;*/
-  margin-top: 69px;
+// Layout
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
   flex-grow: 1;
+  margin-top: 69px;
   header {
-    margin: 0 auto;
-    max-width: 700px;
-    padding: $space 0;
     text-align: center;
   }
 }
-
 section {
-  padding: $space 0;
+  padding: $whitespace 0;
 }
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+article {
+  margin: 0 auto;
+  max-width: 700px;
 }
-
-.MuiContainer-root {
-  flex-grow: 1;
-}
-
 footer {
-  padding: $space 0;
-  text-align: center;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 1248px;
-}
-
-#intro {
-  margin: 0 auto;
-  max-width: 800px;
-  text-align: center;
-
-  h1 {
-    margin-top: 5rem;
-  }
-  p {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 600px;
-  }
-  .cta {
-    .MuiButton-contained {
-      margin-right: 10px;
-    }
-  }
-  img {
-    max-height: 550px;
-  }
-}
-
-#companies {
-  text-align: center;
-  img {
-    max-height: 30px;
-    max-width: 150px;
-    filter: brightness(0) invert(1);
-  }
-}
-
-#about {
-  .skills {
-    padding: 20px;
-  }
-}
-
-.service {
   background-color: $charcoal;
-  border-radius: $radius;
-  margin: 0 auto;
-  margin-bottom: $space;
-  max-width: 1000px;
-  padding: $space;
-
-  .service-image {
-    height: 100%;
+  border-top: 1px solid $grey;
+  margin-top: $whitespace;
+  padding: $whitespace 0;
+  text-align: center;
+  p {
+    margin-top: 30px;
   }
-  img {
-    border-radius: $radius;
-    height: 100%;
-    object-fit: cover;
-    &.even {
-      float: right;
+}
+
+// Routes
+#about {
+  .skillset {
+    background-color: $charcoal;
+  }
+}
+#contact {
+  
+}
+#home {
+  .intro {
+    margin: 0 auto;
+    text-align: center;
+    .cta {
+      .MuiButton-contained {
+        margin-right: 10px;
+      }
     }
   }
-
-  .MuiChip-root {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 47%;
-    &:nth-child(even) {
-      margin-right: 0px;
+  .companies {
+    background-color: $charcoal;
+    border-bottom: 1px solid $grey;
+    border-top: 1px solid $grey;
+    text-align: center;
+    img {
+      filter: brightness(0) invert(1);
+      max-height: 30px;
+      max-width: 150px;
+    }
+  }
+}
+#services {
+  .service {
+    background-color: $charcoal;
+    border-radius: $radius;
+    margin: 0 auto $whitespace;
+    padding: $whitespace;
+    .service-image {
+      height: 100%;
+    }
+    img {
+      border-radius: $radius;
+      height: 100%;
+      object-fit: cover;
+      &.even {
+        float: right;
+      }
+    }
+    .MuiChip-root {
+      margin-bottom: 10px;
+      margin-right: 10px;
+      width: 47%;
+      &:nth-child(even) {
+        margin-right: 0px;
+      }
     }
   }
 }
 
+// Components
 .social {
   background-color: $charcoal;
-  padding: 20px;
   border-radius: $radius;
   float: left;
-  margin-top: $space;
+  margin-top: $whitespace;
+  padding: $space;
   a {
     color: $white;
-    margin-right: 20px;
+    margin-right: $space;
   }
   span {
-    margin-right: 20px;
+    margin-right: $space;
   }
 }

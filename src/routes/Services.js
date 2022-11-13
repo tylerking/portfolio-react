@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Container from '@mui/material/Container'
 import PropTypes from 'prop-types'
 
 import Service from '../components/Service'
@@ -14,24 +15,28 @@ const checkIndex = (index) => {
 
 const Services = ({serviceData}) => {
   return (
-    <article id='services'>
-      <header>
-        <h1>Services</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </header>
-      {serviceData.map((service, index) =>
-        <div className='service' key={index}>
-          <Service
-            capabilities={service.capabilities}
-            description={documentToReactComponents(service.description.json, richTextOptions)}
-            icon={service.icon}
-            image={service.image}
-            odd={checkIndex(index)}
-            title={service.title}
-          />
-        </div>
-      )}
-    </article>
+    <Container id='services'>
+      <section>
+        <header>
+          <h1>Services</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </header>
+      </section>
+      <section>
+        {serviceData.map((service, index) =>
+          <div className='service' key={index}>
+            <Service
+              capabilities={service.capabilities}
+              description={documentToReactComponents(service.description.json, richTextOptions)}
+              icon={service.icon}
+              image={service.image}
+              odd={checkIndex(index)}
+              title={service.title}
+            />
+          </div>
+        )}
+      </section>
+    </Container>
   )
 }
 
