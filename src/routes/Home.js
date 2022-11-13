@@ -7,21 +7,21 @@ import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
-import Process from '../components/Process'
+//import Process from '../components/Process'
 import Project from '../components/Project'
 import richTextOptions from '../utils/richTextOptions'
 
-const Home = ({companyData, homeData, projectData, processData}) => {
+const Home = ({companyData, homeData, projectData}) => {
   return (
     <article id='home'>
 
       <section id='intro'>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={7}>
+          <Grid item xs={12}>
             <h1>
               {homeData.title}
             </h1>
-            <div>{documentToReactComponents(homeData.description.json, richTextOptions)}</div>
+            {documentToReactComponents(homeData.description.json, richTextOptions)}
             <div className='cta'>
               <Button href={homeData.primaryLink} variant="contained">
                 {homeData.primaryText} &nbsp;
@@ -51,7 +51,7 @@ const Home = ({companyData, homeData, projectData, processData}) => {
         </Grid>
       </section>
 
-      <section id='featured'>
+      <section id='projects'>
         <h2>Latest Projects</h2>
         <Grid
           container
@@ -71,9 +71,9 @@ const Home = ({companyData, homeData, projectData, processData}) => {
         </Grid>
       </section>
 
-      <section id='process'>
+      {/*<section id='process'>
         <Process processData={processData} />
-      </section>
+      </section>*/}
 
     </article>
   )

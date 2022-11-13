@@ -31,14 +31,14 @@ const theme = createTheme({
       main: '#008080',
     },
     secondary: {
-      main: '#f50057',
+      main: '#76C0C0',
     },
     background: {
       default: '#121212',
       paper: '#121212',
     },
     text: {
-      primary: '#f5f5f5',
+      primary: '#EBFFFF',
     },
   },
 })
@@ -121,6 +121,7 @@ const query = `
   }
   serviceCollection(order: [order_ASC]) {
     items {
+      capabilities
       description {
         json
       }
@@ -240,8 +241,8 @@ function App() {
             <Route path='/contact' element={<Contact/>} />
             <Route path='*' element={<NotFound/>} />
           </Routes>
-          <SiteFooter socialData={socialData} />
         </Container>
+        <SiteFooter socialData={socialData} />
       </ThemeProvider>
     </BrowserRouter>
   )

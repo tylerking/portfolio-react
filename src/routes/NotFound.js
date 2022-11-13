@@ -6,7 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const NotFound = () => {
   return (
     <article id='not-found'>
-      <h1>404 Not Found</h1>
+      <header>
+        <h1>404 Error</h1>
+        <p>Oop...this page can not be found</p>
+      </header>
       <FontAwesomeIcon icon={faFaceSadCry} size='10x' />
     </article>
   )

@@ -7,7 +7,10 @@ import Form from '../components/Form'
 const Contact = () => {
   return (
     <article id='contact'>
-      <h1>Contact</h1>
+      <header>
+        <h1>Contact</h1>
+        <p>Blurb about the contact page</p>
+      </header>
       <Grid
         container
         alignItems='center'

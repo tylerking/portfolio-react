@@ -14,19 +14,17 @@ import ListItemText from '@mui/material/ListItemText'
 import Paper from '@mui/material/Paper'
 import PropTypes from 'prop-types'
 
+import Stats from '../components/Stats'
 import richTextOptions from '../utils/richTextOptions'
 
 const About = ({aboutData, skillData}) => {
   return (
     <article id='about'>
-      <h1>{aboutData.title}</h1>
-      <div>{documentToReactComponents(aboutData.intro.json, richTextOptions)}</div>
-      <div>
-        - 10+ Years Experience 
-        - 30+ Professional Projects
-        - 11 Github Repositories
-        - 00 Badges on Treehouse
-      </div>
+      <header>
+        <h1>{aboutData.title}</h1>
+        <div>{documentToReactComponents(aboutData.intro.json, richTextOptions)}</div>
+      </header>
+      <Stats />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={8}>
           <div>{documentToReactComponents(aboutData.bio.json, richTextOptions)}</div>

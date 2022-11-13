@@ -15,11 +15,14 @@ const checkIndex = (index) => {
 const Services = ({serviceData}) => {
   return (
     <article id='services'>
-      <h2>How I Can Help Build Your Project</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <header>
+        <h1>Services</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </header>
       {serviceData.map((service, index) =>
         <div className='service' key={index}>
           <Service
+            capabilities={service.capabilities}
             description={documentToReactComponents(service.description.json, richTextOptions)}
             icon={service.icon}
             image={service.image}

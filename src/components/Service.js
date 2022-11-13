@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { faChartLine, faCode, faCoffee, faMap, faPenRuler, faUniversalAccess, faUsersBetweenLines } from '@fortawesome/free-solid-svg-icons'
+import { faCode, faCoffee, faMap, faUsersBetweenLines } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
 import PropTypes from 'prop-types'
 
@@ -9,22 +10,16 @@ const checkIcon = (icon) => {
   switch (icon) {
   case 'Software Development':
     return <FontAwesomeIcon icon={faCode} size='2x' />
-  case 'Accessibility':
-    return <FontAwesomeIcon icon={faUniversalAccess} size='2x' />
-  case 'Data Visualization':
-    return <FontAwesomeIcon icon={faChartLine} size='2x' />
   case 'Product Development':
     return <FontAwesomeIcon icon={faMap} size='2x' />
-  case 'User Experience':
+  case 'Product Design':
     return <FontAwesomeIcon icon={faUsersBetweenLines} size='2x' />
-  case 'Interface Design':
-    return <FontAwesomeIcon icon={faPenRuler} size='2x' />
   default:
     return <FontAwesomeIcon icon={faCoffee} size='2x' />
   }
 }
 
-const Service = ({description, image, odd, title}) => {
+const Service = ({capabilities, description, image, odd, title}) => {
   if (!odd) {
     return (
       <Grid
@@ -35,9 +30,15 @@ const Service = ({description, image, odd, title}) => {
           {checkIcon(title)}
           <h3>{title}</h3>
           {description}
+          <p><strong>Capabilities:</strong></p>
+          {capabilities.map((skill, index) =>
+            <Chip key={index} label={skill} />
+          )}
         </Grid>
-        <Grid item xs={12} md={6}>
-          <img alt={image.title} src={image.url}  className='even'/>
+        <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <div className='service-image'>
+            <img alt={image.title} src={image.url}  className='even'/>
+          </div>
         </Grid>
       </Grid>
     )
@@ -47,19 +48,26 @@ const Service = ({description, image, odd, title}) => {
       container
       spacing={4}
     >
-      <Grid item xs={12} md={6}>
-        <img alt={image.title} src={image.url}  />
+      <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <div className='service-image'>
+          <img alt={image.title} src={image.url}  className='even'/>
+        </div>
       </Grid>
       <Grid item xs={12} md={6}>
         {checkIcon(title)}
         <h3>{title}</h3>
         {description}
+        <p><strong>Capabilities:</strong></p>
+        {capabilities.map((skill, index) =>
+          <Chip key={index} label={skill} />
+        )}
       </Grid>
     </Grid>
   )
 }
 
 Service.propTypes = {
+  capabilities: PropTypes.array,
   description: PropTypes.array,
   image: PropTypes.object,
   odd: PropTypes.bool,
