@@ -11,7 +11,7 @@ const Contact = () => {
       <section>
         <header className='title'>
           <h1>Contact</h1>
-          <p>Blurb about the contact page</p>
+          <p>Lets build something together. To get in touch you can use the form below or email me at <a href='mailto:tk@tylerking.io'>tk@tylerking.io</a>. I should respond within 24 hours.</p>
         </header>
       </section>
       <section>

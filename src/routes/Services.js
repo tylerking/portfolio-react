@@ -19,7 +19,7 @@ const Services = ({serviceData}) => {
       <section>
         <header className='title'>
           <h1>Services</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>If you are in need of a service not listed below just <a href='/contact'>contact me</a> as I may be able to accommodate or at least send you a referral.</p>
         </header>
       </section>
       <section>

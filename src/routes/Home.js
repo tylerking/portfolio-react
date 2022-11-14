@@ -53,7 +53,7 @@ const Home = ({companyData, homeData, projectData}) => {
           >
             {companyData.map((company, index) =>
               <Grid item key={index} xs={6} sm={4} md={2}>
-                <img src={company.logo.url} alt={company.logo.title} />
+                <img src={company.logo.url} alt={company.logo.title} className={company.logo.title.replaceAll(' ', '-').toLowerCase()}/>
               </Grid>
             )}
           </Grid>
