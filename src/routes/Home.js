@@ -64,7 +64,7 @@ const Home = ({companyData, homeData, projectData}) => {
           <h2>Latest Projects</h2>
           <Grid
             container
-            rowSpacing={10} 
+            rowSpacing={5} 
             spacing={2}
           >
             {projectData.map((project, index) =>
