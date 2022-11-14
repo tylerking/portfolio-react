@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { faBars, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -16,7 +16,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import logo from '../assets/logo.svg'
 
-const pages = ['Services', 'About', 'Contact', '404']
+const pages = ['Services', 'About', 'Contact']
 
 
 function SiteHeader() { 
@@ -30,75 +30,71 @@ function SiteHeader() {
   }
 
   return (
-    <AppBar position='fixed'>
-      <Container maxWidth='xl'>
-      
-        <Toolbar disableGutters>
-          <Box href='/' sx={{ mr: 2, display: { md: 'flex' }}}>
-            <Link component={RouterLink} to='/'>
-              <img src={logo} alt='Tyler King' />
-            </Link>
-          </Box>
+    <div className='site-header'>
+      <AppBar position='fixed'>
+        <Container maxWidth='xl'>
+        
+          <Toolbar disableGutters>
+            <Box href='/' sx={{ mr: 2, flexGrow: 1, display: { md: 'flex' }}}>
+              <Link component={RouterLink} to='/'>
+                <img src={logo} alt='Tyler King' />
+              </Link>
+            </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link component={RouterLink} key={page} to={page}>{page}</Link>
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Button href='www.google.com' variant='contained'>
-              <FontAwesomeIcon icon={faDownload} size='1x' />&nbsp;Resume
-            </Button>
-          </Box>
-
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
-              aria-label='Main navigation'
-              color='inherit'
-              onClick={handleOpenNavMenu}
-            >
-              <FontAwesomeIcon icon={faBars} size='1x' />
-            </IconButton>
-            <Menu
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              id='menu-appbar'
-              keepMounted
-              onClose={handleCloseNavMenu}
-              open={Boolean(anchorElNav)}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-            >
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>
-                    <Link component={RouterLink} key={page} to={page}>{page}</Link>
-                  </Typography>
-                </MenuItem>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  <Link component={RouterLink} key={page} to={page}>{page}</Link>
+                </Button>
               ))}
-            </Menu>
-          </Box>
+            </Box>
 
-        </Toolbar>
-      </Container>
-    </AppBar>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                aria-controls='menu-appbar'
+                aria-haspopup='true'
+                aria-label='Main navigation'
+                color='inherit'
+                onClick={handleOpenNavMenu}
+              >
+                <FontAwesomeIcon icon={faBars} size='1x' />
+              </IconButton>
+              <Menu
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                id='menu-appbar'
+                keepMounted
+                onClose={handleCloseNavMenu}
+                open={Boolean(anchorElNav)}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign='center'>
+                      <Link component={RouterLink} key={page} to={page}>{page}</Link>
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </div>
   )
 }
 export default SiteHeader

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 
 const Project = ({description, image, title, demo, source}) => {
   return (
-    <Grid item xs={12} sm={6}>
+    <Grid className='project' item xs={12} sm={6}>
       <Card>
         <CardMedia
           component='img'

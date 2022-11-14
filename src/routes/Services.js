@@ -17,7 +17,7 @@ const Services = ({serviceData}) => {
   return (
     <Container id='services'>
       <section>
-        <header>
+        <header className='title'>
           <h1>Services</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </header>

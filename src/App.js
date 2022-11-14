@@ -50,6 +50,10 @@ const query = `
       bio {
         json
       }
+      image {
+        title
+        url
+      }
       intro {
         json
       }

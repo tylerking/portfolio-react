@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <Container id='contact'>
       <section>
-        <header>
+        <header className='title'>
           <h1>Contact</h1>
           <p>Blurb about the contact page</p>
         </header>

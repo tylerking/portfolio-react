@@ -10,9 +10,10 @@ const About = ({aboutData, skillData}) => {
   return (
     <div id='about'>
       <section>
-        <header>
+        <header className='title'>
           <h1>{aboutData.title}</h1>
-          <div>{documentToReactComponents(aboutData.intro.json, richTextOptions)}</div>
+          {documentToReactComponents(aboutData.intro.json, richTextOptions)}
+          {/*<img alt={aboutData.image.title} src={aboutData.image.url} />*/}
         </header>
       </section>
       <Stats skillData={skillData}/>

@@ -84,9 +84,9 @@ const Stats = ({skillData}) => {
   return (
     <section className='skillset'>
       <Container>
-        <Grid container spacing={2}>
+        <Grid className='stats' container spacing={2}>
           <Grid xs={3}>
-            <h3>10+</h3>
+            <h3>15+</h3>
             <span>Years Experience</span>
           </Grid>
           <Grid xs={3}>
@@ -101,14 +101,16 @@ const Stats = ({skillData}) => {
             <h3>{treehouseData}</h3>
             <span>Treehouse Badges</span>
           </Grid>
+        </Grid>
+        <Grid classname='skills' container spacing={2}>
           <Grid xs={12} md={6}>
-            <h4>{skillData.title}</h4>
+            <h5>{skillData.title}</h5>
             {skillData.skill.map((skill, index) =>
               <Chip icon={iconSkills(skill)} key={index} label={skill} />
             )}
           </Grid>
-          <Grid xs={4} md={6}>
-            <h4>Tools</h4>
+          <Grid xs={12} md={6}>
+            <h5>Tools</h5>
             {skillData.tool.map((tool, index) =>
               <Chip icon={iconTools(tool)} key={index} label={tool} />
             )}

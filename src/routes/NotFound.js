@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <Container id='not-found'>
       <section>
-        <header>
+        <header className='title'>
           <h1>404 Error</h1>
           <p>Oop...this page can not be found</p>
         </header>

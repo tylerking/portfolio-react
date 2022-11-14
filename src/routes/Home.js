@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
 import PropTypes from 'prop-types'
 
 //import Process from '../components/Process'
@@ -16,7 +17,7 @@ const Home = ({companyData, homeData, projectData}) => {
   return (
     <div id='home'>
       <section className='intro'>
-        <header>
+        <header className='title'>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <h1>
@@ -24,14 +25,19 @@ const Home = ({companyData, homeData, projectData}) => {
               </h1>
               {documentToReactComponents(homeData.description.json, richTextOptions)}
               <div className='cta'>
-                <Button href={homeData.primaryLink} variant="contained">
-                  {homeData.primaryText} &nbsp;
-                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='1x' />
-                </Button>
-                <Button href={homeData.secondaryLink} variant="text">
-                  {homeData.secondaryText} &nbsp;
-                  <FontAwesomeIcon icon={faArrowDown} size='1x' />
-                </Button>
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  spacing={2}
+                >
+                  <Button href={homeData.primaryLink} variant="contained">
+                    {homeData.primaryText} &nbsp;
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='1x' />
+                  </Button>
+                  <Button href={homeData.secondaryLink} variant="text">
+                    {homeData.secondaryText} &nbsp;
+                    <FontAwesomeIcon icon={faArrowDown} size='1x' />
+                  </Button>
+                </Stack>
               </div>
             </Grid>
           </Grid>
@@ -53,7 +59,7 @@ const Home = ({companyData, homeData, projectData}) => {
           </Grid>
         </Container>
       </section>
-      <section className='projects'>
+      <section id='projects'>
         <Container>
           <h2>Latest Projects</h2>
           <Grid
