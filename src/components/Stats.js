@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import { 
-  faCss3, faDigitalOcean, faDocker, faFigma, faGit, faGulp, faHtml5, faJira, faJs,
-  faLess, faNodeJs, faReact, faSass, faVuejs } from '@fortawesome/free-brands-svg-icons'
-import { faDatabase, faImage, faNetworkWired, faServer} from '@fortawesome/free-solid-svg-icons'
+  faCss3, faDigitalOcean, faDocker, faFigma, faGit, faGrunt, faGulp, faHtml5, faJira, faJs,
+  faLess, faNodeJs, faPython, faReact, faSass, faVuejs } from '@fortawesome/free-brands-svg-icons'
+import { faCode, faDatabase, faImage, faNetworkWired, faServer} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Chip from '@mui/material/Chip'
 import Container from '@mui/material/Container'
@@ -12,6 +12,10 @@ import PropTypes from 'prop-types'
 
 const iconSkills = (icon) => {
   switch (icon) {
+  case 'Python':
+    return <FontAwesomeIcon icon={faPython} size='1x' />
+  case 'Django':
+    return <FontAwesomeIcon icon={faPython} size='1x' />
   case 'JavaScript':
     return <FontAwesomeIcon icon={faJs} size='1x' />
   case 'Node':
@@ -20,8 +24,14 @@ const iconSkills = (icon) => {
     return <FontAwesomeIcon icon={faReact} size='1x' />
   case 'Vue':
     return <FontAwesomeIcon icon={faVuejs} size='1x' />
+  case 'Next':
+    return <FontAwesomeIcon icon={faReact} size='1x' />
+  case 'Nuxt':
+    return <FontAwesomeIcon icon={faVuejs} size='1x' />
   case 'Gulp':
     return <FontAwesomeIcon icon={faGulp} size='1x' />
+  case 'Grunt':
+    return <FontAwesomeIcon icon={faGrunt} size='1x' />
   case 'CSS3':
     return <FontAwesomeIcon icon={faCss3} size='1x' />
   case 'Less':
@@ -30,6 +40,8 @@ const iconSkills = (icon) => {
     return <FontAwesomeIcon icon={faSass} size='1x' />
   case 'HTML5':
     return <FontAwesomeIcon icon={faHtml5} size='1x' />
+  case 'Pug':
+    return <FontAwesomeIcon icon={faCode} size='1x' />
   default:
     return <FontAwesomeIcon icon={faServer} size='1x' />
   }
@@ -48,6 +60,8 @@ const iconTools = (icon) => {
   case 'Headless APIs':
     return <FontAwesomeIcon icon={faServer} size='1x' />
   case 'Netlify':
+    return <FontAwesomeIcon icon={faNetworkWired} size='1x' />
+  case 'Heroku':
     return <FontAwesomeIcon icon={faNetworkWired} size='1x' />
   case 'Digital Ocean':
     return <FontAwesomeIcon icon={faDigitalOcean} size='1x' />
