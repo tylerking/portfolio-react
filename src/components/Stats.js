@@ -99,22 +99,22 @@ const Stats = ({skillData}) => {
     <section className='skillset'>
       <Container>
         <Grid className='stats' container spacing={2}>
-          <Grid xs={3}>
+          <Grid xs={4}>
             <h3>15+</h3>
             <span>Years Experience</span>
           </Grid>
-          <Grid xs={3}>
+          <Grid xs={4}>
             <h3>50+</h3>
             <span>Projects Done</span>
           </Grid>
-          <Grid xs={3}>
+          <Grid xs={4}>
             <h3>{githubData.public_repos}</h3>
             <span>Github Repos</span>
           </Grid>
-          <Grid xs={3}>
+          {/*<Grid xs={3}>
             <h3>{treehouseData}</h3>
             <span>Treehouse Badges</span>
-          </Grid>
+          </Grid>*/}
         </Grid>
         <Grid classname='skills' container spacing={2}>
           <Grid xs={12} md={6}>
